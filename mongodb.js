@@ -14,10 +14,10 @@ const config = {
 const connectionParams = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    ssl: config.MONGO_SSL === 'true',
-    sslCA: config.MONGO_SSL === 'true'
-        ? [Buffer.from(config.MONGO_CA, 'base64').toString('ascii')]
-        : undefined
+    // ssl: config.MONGO_SSL === 'true',
+    // sslCA: config.MONGO_SSL === 'true'
+    //     ? [Buffer.from(config.MONGO_CA, 'base64').toString('ascii')]
+    //     : undefined
 };
 
 // Construct MongoDB URI without authentication
