@@ -2,9 +2,6 @@ services:
   mongodb:
     image: mongo:latest
     restart: on-failure
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=root
     ports:
       - 27017:27017
     volumes:
@@ -22,7 +19,7 @@ services:
       - MONGO_HOST=mongodb
       - MONGO_PORT=27017
       - MONGO_DB=localdb
-      - MONGO_SSL=true
+      - MONGO_SSL=false
       - MONGO_CA=/etc/ssl/certs/ca-certificates.crt
 
 volumes:
