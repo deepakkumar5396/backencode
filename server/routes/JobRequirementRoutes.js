@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const jobRequirementController = require('../controllers/jobRequirementController');
+const jobRequirementController = require('../controllers/JobRequirementController');
 
 // Get all job requirements
 router.get('/job-requirements', jobRequirementController.getAllJobRequirements);

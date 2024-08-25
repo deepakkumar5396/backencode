@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bookingRequestController = require('../controllers/bookingRequestController');
+const bookingRequestController = require('../controllers/BookingRequestController');
 
 // Get all booking requests
 router.get('/booking-requests', bookingRequestController.getAllBookingRequests);

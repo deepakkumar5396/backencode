@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auditTrailController = require('../controllers/auditTrailController');
+const auditTrailController = require('../controllers/AuditTrailController');
 
 // Get all audit trails
 router.get('/audit-trails', auditTrailController.getAllAuditTrails);

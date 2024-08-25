@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const labourController = require('../controllers/labourController');
+const labourController = require('../controllers/LabourController');
 
 // Get all labours
 router.get('/labours', labourController.getAllLabours);
