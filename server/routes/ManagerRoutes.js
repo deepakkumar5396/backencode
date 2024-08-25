@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const managerController = require('../controllers/managerController');
+const managerController = require('../controllers/ManagerController');
 
 // Get all managers
 router.get('/managers', managerController.getAllManagers);
