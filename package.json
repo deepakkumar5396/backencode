@@ -9,7 +9,14 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:up": "migrate-mongo up",
+    "migrate:down": "migrate-mongo down",
+    "migrate:status": "migrate-mongo status",
+    "format": "prettier --write 'server/**/*.js' 'db/migration/**/*.js' 'db/seeds/**/*.js'",
+    "format:check": "prettier --check 'server/**/*.js' 'db/migration/**/*.js' 'db/seeds/**/*.js'",
+    "lint": "eslint 'server/**/*.js' 'db/migration/**/*.js' 'db/seeds/**/*.js'",
+    "lint:fix": "eslint 'server/**/*.js' 'db/migration/**/*.js' 'db/seeds/**/*.js' --fix"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +26,10 @@
     "express": "^4.19.2",
     "migrate-mongo": "^11.0.0",
     "mongoose": "^8.5.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "eslint": "^8.43.0",
+    "eslint-plugin-node": "^11.1.0"
   }
 }

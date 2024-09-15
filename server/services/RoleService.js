@@ -53,6 +53,28 @@ class RoleService {
             session.endSession();
         }
     }
+
+    // Additional method to find or create a role
+    async findOrCreateRole(roleName) {
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        try {
+            let role = await roleRepository.getRoleByName(roleName);
+            if (!role) {
+                role = await roleRepository.createRole(
+                    { roleName, description: `Role for ${roleName}` },
+                    session
+                );
+            }
+            await session.commitTransaction();
+            return role;
+        } catch (error) {
+            await session.abortTransaction();
+            throw error;
+        } finally {
+            session.endSession();
+        }
+    }
 }
 
 module.exports = new RoleService();
