@@ -1,13 +1,16 @@
-const userRepository = require("../repositories/UserRepository"); // Corrected the repository import
-const addressRepository = require("../repositories/AddressRepository"); // Import AddressRepository
+const userRepository = require("../repositories/UserRepository");
+const addressRepository = require("../repositories/AddressRepository");
+const roleService = require("../services/RoleService"); // Import RoleService
 const mongoose = require("mongoose");
 
 class UserService {
   async createUser(userData) {
     const session = await mongoose.startSession();
     session.startTransaction();
-    console.log("user data is", userData);
     try {
+      // Find or create roles
+      const role = await roleService.findOrCreateRole(userData.roleName);
+
       // Create permanent address
       const permanentAddress = await addressRepository.createAddress(
         userData.permanentAddress,
@@ -29,9 +32,11 @@ class UserService {
         ? currentAddress._id
         : permanentAddress._id; // If current address is not provided, use permanent address
 
-      // Create the user with the address IDs
+      // Add role ID to userData
+      userData.roleId = role._id;
+
+      // Create the user with the address IDs and role ID
       const user = await userRepository.createUser(userData, session);
-      console.log("hello", userData);
       await session.commitTransaction();
       return user;
     } catch (error) {
